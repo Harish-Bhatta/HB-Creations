@@ -1,0 +1,1586 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>HB Creations – Health Advice | Harish Bhatta Official Website</title>
+<meta name="description" content="Daily health advice, nutrition tips, and exercises from HB Creations by Harish Bhatta. Stay healthy and motivated.">
+<meta name="keywords" content="Health advice, HB Creations, Nutrition, Exercise, Harish Bhatta">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<style>
+/* RESET */
+* {margin:0; padding:0; box-sizing:border-box; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; color:#000;}
+
+/* Hide both initially */
+#pcVersion, #mobileVersion {display:none;}
+
+/* Show mobile */
+@media (max-width:768px){#mobileVersion{display:block;}}
+
+/* Show desktop */
+@media (min-width:769px){#pcVersion{display:block;}}
+
+/* ================= PC Styles ================= */
+#pcVersion .sidebar{
+position:fixed; top:0; left:0; width:360px; height:100vh; background:white; border-right:1px solid #ddd; overflow-y:auto; padding:20px; scrollbar-width:none; transition:all 0.3s ease;
+}
+#pcVersion .sidebar-section{
+margin-bottom:25px; padding:15px; border-radius:12px; background:linear-gradient(135deg,#ffecd2,#fad090); transition:0.3s;
+}
+#pcVersion .sidebar-section h2{margin-bottom:10px;}
+#pcVersion .sidebar-section ul{list-style:none;}
+#pcVersion .sidebar-section li{margin:8px 0; font-weight:500;}
+#pcVersion .sidebar-section li a{
+text-decoration:none; color:#000; display:block; padding:4px 12px; border-radius:10px; transition:all 0.25s ease;
+}
+#pcVersion .sidebar-section li a:hover{background:rgba(255,255,255,0.5); color:#ff4f79; font-weight:700;}
+#pcVersion .sidebar-section li a.active{background:rgba(255,255,255,0.9); color:#ff4f79; font-weight:700;}
+
+#pcVersion .main{margin-left:360px; padding:30px; flex:1; height:100vh; overflow-y:auto; scrollbar-width:thin; scrollbar-color:#bbb transparent;}
+#pcVersion .main::-webkit-scrollbar{width:6px;}
+#pcVersion .main::-webkit-scrollbar-track{background:transparent;}
+#pcVersion .main::-webkit-scrollbar-thumb{background:#bbb;border-radius:10px;}
+#pcVersion .main::-webkit-scrollbar-thumb:hover{background:#888;}
+
+#pcVersion .main-title{
+text-align:center; background:linear-gradient(135deg,#ff9a9e,#fad0c4,#fad090); padding:25px 15px; border-radius:12px; color:#fff; font-size:2.2rem; margin-bottom:30px; font-weight:700;
+}
+
+#pcVersion .main h2{font-size:1.6rem; margin-bottom:10px; font-weight:600;}
+#pcVersion .card{padding:20px; margin-bottom:20px; border-radius:10px; color:#000; line-height:1.8;}
+#pcVersion .card ul{list-style:disc; margin-left:20px;}
+#pcVersion .card:nth-child(odd){background:linear-gradient(135deg,#ffecd2,#fad090);}
+#pcVersion .card:nth-child(even){background:linear-gradient(135deg,#ff9a9e,#fad0c4);}
+
+#pcVersion footer{
+text-align:center; padding:20px; font-size:1rem; font-weight:600; background:linear-gradient(135deg,#ff9f9f,#fad0c4); color:#000; border-radius:10px; line-height:1.6;
+}
+
+/* ================= Mobile Styles ================= */
+#mobileVersion *{
+   -webkit-tap-highlight-color: rgba(255,255,255,0.5);
+}
+#mobileVersion .main-title{
+ display:flex; justify-content:space-between; align-items:center;
+ background:linear-gradient(135deg,#ff9a9e,#fad0c4,#fad090);
+ margin:10px 15px 0px 15px; padding:5px 20px; border-radius:12px;
+ font-size:1.6rem; font-weight:400; position: relative;
+}
+#mobileVersion .letters{display:flex; gap:20px; margin-left:50px;}
+#mobileVersion .letters a{text-decoration:none; color:#000; padding:8px 15px; border-radius:25px; font-weight:500; transition: all .3s;}
+#mobileVersion .letters a.active{font-weight:550; background: rgba(255,255,255,0.9);}
+
+#mobileVersion #menu-button{position:absolute; top:-1%; left:5px; z-index:5000; cursor:pointer; font-size:1.8rem; background:transparent; padding:10px 15px; border-radius:10px;}
+#mobileVersion #sidebar{
+position:fixed; top:0; left:-260px; width:260px; height:100%; background:#fff; z-index:1400; padding:10px; transition:left 0.4s; box-shadow:2px 0 12px rgba(0,0,0,0.2); overflow-y:auto;
+}
+#mobileVersion #sidebar.open{left:0;}
+#mobileVersion .sidebar-section{margin-bottom:5px; padding:15px; border-radius:12px; background:linear-gradient(135deg,#ffecd2,#fad090);}
+#mobileVersion .sidebar-section h22{
+  font-size:1.6rem;
+  margin-bottom:10px;
+  font-weight:100;
+  margin-left: 45px;
+}
+#mobileVersion .sidebar-section h2{font-size:1.6rem; margin-bottom:10px; font-weight:100; margin-left:10px;}
+#mobileVersion .sidebar-section ul{list-style:none;}
+#mobileVersion .sidebar-section li{margin:8px 0; font-weight:500;}
+#mobileVersion .sidebar-section li a{text-decoration:none; color:#000; display:block; padding:4px 12px; border-radius:10px; transition:all 0.25s ease;}
+#mobileVersion .sidebar-section li a:hover{background:rgba(255,255,255,0.5); color:#ff4f79; font-weight:700;}
+#mobileVersion .sidebar-section li a.active{background:rgba(255,255,255,0.9); color:#ff4f79; font-weight:700;}
+
+#mobileVersion #menuOverlay{position:fixed; top:0; left:0; width:100%; height:100%; background: rgba(0,0,0,0.2); z-index:1300; display:none;}
+#mobileVersion #menuOverlay.active{display:block;}
+
+#mobileVersion .main{margin:5px; padding:10px; flex:1; overflow-y:auto; scrollbar-width:thin; scrollbar-color:#bbb transparent;}
+#mobileVersion .main::-webkit-scrollbar{width:6px;}
+#mobileVersion .main::-webkit-scrollbar-track{background:transparent;}
+#mobileVersion .main::-webkit-scrollbar-thumb{background:#bbb;border-radius:10px;}
+#mobileVersion .main::-webkit-scrollbar-thumb:hover{background:#888;}
+
+#mobileVersion .section-title{text-align:center; background:linear-gradient(135deg,#ff9a9e,#fad0c4,#fad090); padding:10px 10px; border-radius:12px; color:#fff; font-size:2rem; margin-bottom:10px; font-weight:700;}
+#mobileVersion .card{padding:20px; margin-bottom:20px; border-radius:10px; color:#000; line-height:1.8;}
+#mobileVersion .card ul{list-style:disc; margin-left:20px;}
+#mobileVersion .card:nth-child(odd){background:linear-gradient(135deg,#ffecd2,#fad090);}
+#mobileVersion .card:nth-child(even){background:linear-gradient(135deg,#ff9a9e,#fad0c4);}
+#mobileVersion footer{margin-top:20px; padding:20px; text-align:center; color: #fff; background:linear-gradient(135deg,#ff9f9f,#fad0c4); border-radius:10px;}
+
+/* PC adjustments inside mobile */
+@media(min-width:1025px){
+  #mobileVersion #sidebar{left:0 !important; width:360px; box-shadow:none;}
+  #mobileVersion .main{margin-left:360px; padding:30px;}
+  #mobileVersion #menu-button, #menuOverlay{display:none;}
+}
+</style>
+</head>
+
+<body>
+
+<!-- ================= PC VERSION ================= -->
+<div id="pcVersion">
+  <div class="sidebar">
+    <!-- Sidebar content same as earlier -->
+<div class="sidebar-section">
+<h2>Menu</h2>
+<ul>
+<li><a href="index.html">🏠 Home</a></li>
+<li><a href="health-advice.html" class="active">🩺 Health Advice</a></li>
+<li><a href="body-structure.html">🧬 Body Structure</a></li>
+<li><a href="nature.html">🌿 Nature</a></li>
+</ul>
+</div>
+
+    <div class="sidebar-section">
+      <h2>Information</h2>
+      <ul>
+        <li><a href="daily-exercise.html">🏃 Daily Exercise</a></li>
+        <li><a href="articles.html">📚 Articles</a></li>
+        <li><a href="community.html">👥 Community</a></li>
+      </ul>
+    </div>
+
+    <div class="sidebar-section">
+      <h2>Additional</h2>
+      <ul>
+        <li><a href="quiz.html">❓ Quiz</a></li>
+        <li><a href="bmi-calculator.html">⚖️ BMI Calculator</a></li>
+        <li><a href="gallery.html">🖼️ Gallery</a></li>
+      </ul>
+    </div>
+
+<div class="sidebar-section">
+<h2>Motivational Quotes</h2>
+<ul>
+<li>• Health is not valued until sickness comes.</li>
+<li>• A healthy body creates a healthy mind.</li>
+<li>• Consistency in small habits builds a strong future.</li>
+<li>• Taking care of your body is a lifelong investment.</li>
+<li>• Your daily choices shape your health tomorrow.</li>
+<li>• Discipline and balance lead to lasting wellbeing.</li>
+<li>• Positive thoughts create positive health.</li>
+<li>• Every healthy decision counts.</li>
+</ul>
+</div>
+
+<div class="sidebar-section">
+<h2>Health Reminders</h2>
+<ul>
+<li>Drink enough clean water throughout the day.</li>
+<li>Wash hands before eating and after using the restroom.</li>
+<li>Eat fresh fruits and vegetables daily.</li>
+<li>Avoid excessive junk food, sugar, and oily meals.</li>
+<li>Sleep 7–8 hours every night for proper body recovery.</li>
+<li>Exercise or walk for at least 20–30 minutes each day.</li>
+<li>Maintain good posture while studying or working.</li>
+<li>Take short breaks during long periods of screen use.</li>
+<li>Keep your surroundings clean and hygienic.</li>
+<li>Avoid smoking, alcohol, and harmful substances.</li>
+<li>Practice deep breathing or relaxation to reduce stress.</li>
+<li>Visit a doctor regularly for health checkups.</li>
+<li>Stay positive and manage stress properly.</li>
+<li>Spend some time outdoors in fresh air and sunlight.</li>
+<li>Maintain a balanced daily routine.</li>
+<li>Stay connected with family and friends.</li>
+<li>Limit excessive mobile and screen time.</li>
+</ul>
+
+</div>
+
+    <div class="sidebar-section">
+      <h2>Info</h2>
+      <ul>
+        <li><a href="connect.html">📞 Contact</a></li>
+        <li><a href="about.html">ℹ️ About Us</a></li>
+        <li><a style="text-decoration:none;color:#1877f2;" href="https://www.facebook.com/harish.bhatta.56305" target="_blank">🌐 Facebook</a></li>
+        <li><a style="text-decoration:none;color:#ff0000;" href="https://www.youtube.com/channel/UCe1apgoO7x9BH3MdeJGWbHQ" target="_blank">▶ YouTube</a></li>
+      </ul>
+    </div>
+  </div>
+
+<div class="main">
+<div class="main-title">Health Advice</div>
+
+<div class="card">
+<h2>Nutrition and Diet</h2>
+
+<p>
+Nutrition is one of the most important foundations of human health. The food people eat every day directly affects energy levels, growth, immunity, mental clarity, and long-term disease prevention. A balanced diet provides the body with the nutrients it needs to function properly. These nutrients include carbohydrates for energy, proteins for growth and repair, fats for brain and hormone function, vitamins and minerals for regulation of body processes, and fiber for healthy digestion.
+</p>
+
+<p>
+Poor dietary habits can lead to many health problems such as obesity, diabetes, heart disease, and nutritional deficiencies. On the other hand, healthy eating patterns help maintain body strength, support mental wellbeing, improve concentration, and increase longevity. Developing good eating habits early in life is especially important because they shape long-term health outcomes.
+</p>
+
+<h3>Major Nutrients Required by the Body</h3>
+<ul>
+<li><strong>Carbohydrates:</strong> Carbohydrates are the main source of energy for the body. Foods such as rice, wheat, maize, potatoes, and whole grains provide carbohydrates needed for daily physical and mental activities.</li>
+<li><strong>Proteins:</strong> Proteins help build muscles, repair tissues, and produce enzymes and hormones. Good protein sources include eggs, milk, fish, lentils, beans, soybeans, and nuts.</li>
+<li><strong>Healthy Fats:</strong> Healthy fats support brain development and hormone production. They are found in foods such as nuts, seeds, avocados, and vegetable oils.</li>
+<li><strong>Vitamins:</strong> Vitamins are essential for immunity, vision, skin health, and metabolism. Fruits and vegetables are rich sources of vitamins.</li>
+<li><strong>Minerals:</strong> Minerals such as calcium, iron, potassium, and magnesium help maintain strong bones, healthy blood, and proper nerve function.</li>
+<li><strong>Fiber:</strong> Dietary fiber improves digestion and prevents constipation. Whole grains, fruits, vegetables, and legumes contain high amounts of fiber.</li>
+</ul>
+
+<h3>Principles of Balanced Eating</h3>
+<ul>
+<li>Eat a variety of foods from different food groups every day.</li>
+<li>Include colorful fruits and vegetables to obtain diverse nutrients.</li>
+<li>Prefer whole grains instead of refined grains.</li>
+<li>Choose natural and minimally processed foods.</li>
+<li>Limit foods high in sugar, salt, and unhealthy fats.</li>
+<li>Drink sufficient water to maintain hydration.</li>
+</ul>
+
+<h3>Daily Healthy Eating Practices</h3>
+<ul>
+<li>Start the day with a nutritious breakfast that includes protein and fiber.</li>
+<li>Eat meals at regular intervals to maintain stable energy levels.</li>
+<li>Avoid skipping meals because it may lead to overeating later.</li>
+<li>Chew food slowly to improve digestion.</li>
+<li>Maintain appropriate portion sizes.</li>
+<li>Choose seasonal and locally available foods for freshness.</li>
+</ul>
+
+<h3>Common Dietary Mistakes to Avoid</h3>
+<ul>
+<li>Consuming excessive sugary drinks and snacks.</li>
+<li>Relying heavily on processed and fast foods.</li>
+<li>Eating very late at night.</li>
+<li>Ignoring hydration needs.</li>
+<li>Following extreme or unbalanced diets.</li>
+</ul>
+
+<h3>Importance of Hydration</h3>
+<p>
+Water is essential for nearly every function in the body. It regulates body temperature, transports nutrients, removes waste products, and supports cellular processes. Drinking sufficient water throughout the day helps maintain energy levels and prevents dehydration.
+</p>
+
+<ul>
+<li>Drink 6–8 glasses of water daily.</li>
+<li>Increase water intake during hot weather or physical activity.</li>
+<li>Limit sugary beverages and caffeinated drinks.</li>
+<li>Include hydrating foods such as fruits and vegetables.</li>
+</ul>
+</div>
+
+
+
+<div class="card">
+<h2>Preventive Healthcare</h2>
+
+<p>
+Preventive healthcare focuses on maintaining health and preventing diseases before they occur. Many serious health conditions can be avoided or minimized through early detection, healthy lifestyle habits, and regular health monitoring. Prevention not only improves quality of life but also reduces medical expenses and long-term health complications.
+</p>
+
+<p>
+A proactive approach to health includes maintaining hygiene, receiving vaccinations, attending regular medical checkups, and being aware of potential health risks. Education about preventive health practices empowers individuals to make informed decisions that protect both personal and community health.
+</p>
+
+<h3>Importance of Regular Health Checkups</h3>
+<ul>
+<li>Helps detect health problems at an early stage.</li>
+<li>Allows monitoring of important health indicators such as blood pressure and cholesterol.</li>
+<li>Provides an opportunity for professional health guidance.</li>
+<li>Ensures timely vaccination and preventive treatments.</li>
+</ul>
+
+<h3>Vaccination and Disease Prevention</h3>
+<ul>
+<li>Vaccines protect against many infectious diseases.</li>
+<li>Following vaccination schedules helps build immunity.</li>
+<li>Vaccination protects both individuals and communities.</li>
+<li>Consult healthcare professionals regarding recommended vaccines.</li>
+</ul>
+
+<h3>Hygiene and Sanitation Practices</h3>
+<ul>
+<li>Wash hands thoroughly before meals and after using the restroom.</li>
+<li>Maintain clean living environments.</li>
+<li>Use safe drinking water.</li>
+<li>Practice proper food preparation and storage.</li>
+<li>Dispose of waste responsibly to prevent disease spread.</li>
+</ul>
+
+<h3>Environmental Health and Safety</h3>
+<ul>
+<li>Avoid exposure to harmful chemicals and pollutants.</li>
+<li>Ensure good ventilation in living spaces.</li>
+<li>Use protective equipment during risky activities.</li>
+<li>Follow road and workplace safety rules.</li>
+</ul>
+
+<h3>Healthy Lifestyle Habits</h3>
+<ul>
+<li>Engage in regular physical activity.</li>
+<li>Maintain balanced nutrition.</li>
+<li>Get adequate sleep each night.</li>
+<li>Avoid harmful substances such as tobacco and excessive alcohol.</li>
+<li>Manage stress effectively.</li>
+</ul>
+
+<p>
+Preventive healthcare is not limited to hospitals and clinics. Daily lifestyle choices play a significant role in preventing diseases and maintaining long-term health. Awareness, education, and consistent healthy behaviors form the foundation of preventive health.
+</p>
+</div>
+
+
+
+<div class="card">
+<h2>Mental Health Advice</h2>
+
+<p>
+Mental health is a crucial aspect of overall wellbeing. It affects how people think, feel, behave, and interact with others. A healthy mind enables individuals to cope with stress, work productively, and maintain meaningful relationships. Mental health challenges can affect anyone and should be addressed with understanding and support.
+</p>
+
+<p>
+Maintaining mental health requires attention to emotional balance, stress management, social connections, and self-care. Positive mental health contributes to improved decision-making, stronger resilience, and greater life satisfaction.
+</p>
+
+<h3>Factors Affecting Mental Health</h3>
+<ul>
+<li>Stress from work, studies, or personal responsibilities.</li>
+<li>Sleep quality and daily routines.</li>
+<li>Social relationships and emotional support.</li>
+<li>Physical health and nutrition.</li>
+<li>Environmental conditions and lifestyle habits.</li>
+</ul>
+
+<h3>Practices for Maintaining Mental Wellbeing</h3>
+<ul>
+<li>Practice mindfulness or meditation regularly.</li>
+<li>Engage in hobbies and creative activities.</li>
+<li>Maintain positive social connections.</li>
+<li>Spend time outdoors and connect with nature.</li>
+<li>Maintain a balanced daily schedule.</li>
+</ul>
+
+<h3>Stress Management Techniques</h3>
+<ul>
+<li>Deep breathing exercises.</li>
+<li>Regular physical exercise.</li>
+<li>Time management and prioritization.</li>
+<li>Relaxation activities such as reading or music.</li>
+<li>Seeking emotional support when needed.</li>
+</ul>
+
+<h3>Healthy Digital Habits</h3>
+<ul>
+<li>Limit excessive screen time.</li>
+<li>Take breaks during long periods of device use.</li>
+<li>Avoid using electronic devices immediately before sleep.</li>
+<li>Engage in offline activities to maintain balance.</li>
+</ul>
+
+<p>
+Mental health should be treated with the same importance as physical health. When individuals prioritize mental wellbeing, they build resilience and develop the ability to face life’s challenges more effectively.
+</p>
+</div>
+
+
+
+<div class="card">
+<h2>Healthy Daily Lifestyle</h2>
+
+<p>
+A healthy lifestyle is built through consistent daily habits. Small positive choices made each day accumulate over time to produce significant improvements in health and wellbeing. Developing structured routines helps maintain productivity, physical fitness, and emotional balance.
+</p>
+
+<h3>Healthy Morning Routine</h3>
+<ul>
+<li>Wake up early to align with natural body rhythms.</li>
+<li>Drink a glass of water to rehydrate the body.</li>
+<li>Perform light stretching or exercise.</li>
+<li>Eat a nutritious breakfast.</li>
+<li>Plan tasks and goals for the day.</li>
+</ul>
+
+<h3>Productive Daily Habits</h3>
+<ul>
+<li>Maintain good posture while studying or working.</li>
+<li>Take regular breaks to reduce fatigue.</li>
+<li>Stay physically active throughout the day.</li>
+<li>Practice positive thinking and gratitude.</li>
+<li>Maintain cleanliness and organization.</li>
+</ul>
+
+<h3>Healthy Evening Routine</h3>
+<ul>
+<li>Eat dinner at a reasonable time.</li>
+<li>Limit heavy meals late at night.</li>
+<li>Reflect on the day’s achievements.</li>
+<li>Reduce screen exposure before bedtime.</li>
+<li>Sleep early to allow proper rest and recovery.</li>
+</ul>
+
+<p>
+Consistent healthy routines improve physical strength, mental clarity, and emotional stability. Over time, these habits create a balanced lifestyle that supports long-term wellbeing.
+</p>
+</div>
+
+<div class="card">
+<h2>Personal Hygiene</h2>
+
+<p>
+Personal hygiene refers to the practices individuals follow to maintain cleanliness and protect themselves from diseases. Maintaining hygiene reduces the spread of bacteria, viruses, and parasites that can cause infections. Good hygiene also promotes confidence, comfort, and social wellbeing. Many infectious diseases spread primarily because of poor hygiene practices, which makes cleanliness one of the most important aspects of public health.
+</p>
+
+<p>
+Personal hygiene habits should be practiced consistently every day. These practices include body cleanliness, oral hygiene, proper clothing hygiene, and maintaining clean surroundings. Teaching hygiene practices early in life helps individuals develop habits that last throughout their lifetime.
+</p>
+
+<h3>Daily Hygiene Practices</h3>
+<ul>
+<li>Wash hands thoroughly with soap before eating and after using the restroom.</li>
+<li>Bathe regularly to remove dirt, sweat, and harmful microorganisms.</li>
+<li>Brush teeth at least twice daily.</li>
+<li>Trim and clean fingernails regularly.</li>
+<li>Wear clean clothes and change them frequently.</li>
+<li>Keep hair clean and properly maintained.</li>
+</ul>
+
+<h3>Preventing Spread of Infection</h3>
+<ul>
+<li>Cover mouth and nose when coughing or sneezing.</li>
+<li>Avoid touching the face with unwashed hands.</li>
+<li>Do not share personal items such as towels or toothbrushes.</li>
+<li>Keep living environments clean and well ventilated.</li>
+<li>Dispose of waste properly.</li>
+</ul>
+</div>
+
+
+
+<div class="card">
+<h2>Sleep and Rest</h2>
+
+<p>
+Sleep is essential for maintaining physical health, mental clarity, and emotional stability. During sleep, the body performs many important functions such as repairing tissues, strengthening immunity, and processing information learned during the day. Lack of sleep can lead to fatigue, poor concentration, weakened immunity, and long-term health problems.
+</p>
+
+<p>
+Healthy sleep habits help improve productivity, mood, and overall wellbeing. A consistent sleep routine ensures that the body’s natural biological clock functions properly.
+</p>
+
+<h3>Benefits of Proper Sleep</h3>
+<ul>
+<li>Improves memory and learning ability.</li>
+<li>Supports immune system function.</li>
+<li>Enhances mood and emotional stability.</li>
+<li>Promotes healthy growth and development.</li>
+<li>Helps regulate hormones and metabolism.</li>
+</ul>
+
+<h3>Healthy Sleep Habits</h3>
+<ul>
+<li>Maintain a consistent sleep schedule.</li>
+<li>Sleep at least 7–8 hours each night.</li>
+<li>Avoid heavy meals before bedtime.</li>
+<li>Limit screen use before sleeping.</li>
+<li>Create a quiet, comfortable sleeping environment.</li>
+</ul>
+</div>
+
+
+
+<div class="card">
+<h2>Physical Activity</h2>
+
+<p>
+Physical activity is essential for maintaining a healthy body and preventing many chronic diseases. Regular exercise strengthens muscles, improves cardiovascular health, increases energy levels, and supports mental wellbeing. Even moderate physical activity can significantly improve overall health.
+</p>
+
+<p>
+Incorporating exercise into daily routines helps individuals maintain physical fitness and develop long-term healthy habits. Activities such as walking, cycling, swimming, and sports can contribute to better health.
+</p>
+
+<h3>Types of Physical Activity</h3>
+<ul>
+<li>Aerobic activities such as walking, running, and cycling.</li>
+<li>Strength training to build muscles.</li>
+<li>Stretching exercises to improve flexibility.</li>
+<li>Balance exercises for coordination.</li>
+</ul>
+
+<h3>Benefits of Exercise</h3>
+<ul>
+<li>Improves heart and lung health.</li>
+<li>Maintains healthy body weight.</li>
+<li>Reduces stress and anxiety.</li>
+<li>Strengthens bones and muscles.</li>
+<li>Improves sleep quality.</li>
+</ul>
+</div>
+
+
+
+<div class="card">
+<h2>Heart Health</h2>
+
+<p>
+The heart is a vital organ responsible for pumping blood throughout the body. Maintaining heart health is essential for preventing cardiovascular diseases, which are among the leading causes of illness worldwide. A healthy heart ensures efficient circulation of oxygen and nutrients to all body tissues.
+</p>
+
+<p>
+Lifestyle choices such as diet, exercise, stress management, and avoiding harmful habits significantly influence heart health.
+</p>
+
+<h3>Healthy Heart Habits</h3>
+<ul>
+<li>Eat a balanced diet low in saturated fats.</li>
+<li>Engage in regular physical activity.</li>
+<li>Maintain healthy body weight.</li>
+<li>Avoid smoking and harmful substances.</li>
+<li>Monitor blood pressure regularly.</li>
+</ul>
+
+<h3>Risk Factors to Avoid</h3>
+<ul>
+<li>High salt consumption.</li>
+<li>Lack of physical activity.</li>
+<li>Chronic stress.</li>
+<li>Unhealthy diet patterns.</li>
+</ul>
+</div>
+
+
+
+<div class="card">
+<h2>Digestive Health</h2>
+
+<p>
+The digestive system plays a crucial role in breaking down food, absorbing nutrients, and eliminating waste. Maintaining digestive health ensures that the body receives essential nutrients required for energy, growth, and repair.
+</p>
+
+<p>
+Poor digestion can cause discomfort, fatigue, and nutritional deficiencies. Proper dietary habits and hydration help maintain healthy digestive function.
+</p>
+
+<h3>Practices for Healthy Digestion</h3>
+<ul>
+<li>Consume fiber-rich foods.</li>
+<li>Drink adequate water.</li>
+<li>Eat meals at regular times.</li>
+<li>Chew food slowly.</li>
+<li>Avoid excessive processed foods.</li>
+</ul>
+
+<h3>Foods That Support Digestion</h3>
+<ul>
+<li>Whole grains.</li>
+<li>Fruits and vegetables.</li>
+<li>Yogurt and probiotic foods.</li>
+<li>Legumes and beans.</li>
+</ul>
+</div>
+
+
+
+<div class="card">
+<h2>Immune System Care</h2>
+
+<p>
+The immune system protects the body from harmful microorganisms such as bacteria, viruses, and parasites. A strong immune system helps prevent infections and supports recovery from illness.
+</p>
+
+<p>
+Maintaining immunity requires a combination of healthy lifestyle habits including balanced nutrition, adequate sleep, regular exercise, and stress management.
+</p>
+
+<h3>Ways to Strengthen Immunity</h3>
+<ul>
+<li>Eat nutrient-rich foods.</li>
+<li>Maintain regular physical activity.</li>
+<li>Sleep adequately.</li>
+<li>Stay hydrated.</li>
+<li>Reduce stress levels.</li>
+</ul>
+
+<h3>Immune Supporting Nutrients</h3>
+<ul>
+<li>Vitamin C</li>
+<li>Vitamin D</li>
+<li>Zinc</li>
+<li>Antioxidants</li>
+</ul>
+</div>
+
+
+
+<div class="card">
+<h2>Eye Health</h2>
+<p>
+Healthy vision is essential for daily life. Proper eye care helps prevent vision problems and supports long-term eye health.
+</p>
+
+<h3>Eye Care Practices</h3>
+<ul>
+<li>Limit screen exposure.</li>
+<li>Follow the 20-20-20 rule during computer use.</li>
+<li>Use adequate lighting while reading.</li>
+<li>Eat foods rich in vitamin A.</li>
+</ul>
+
+<h3>Protecting Vision</h3>
+<ul>
+<li>Wear protective eyewear when necessary.</li>
+<li>Avoid rubbing eyes frequently.</li>
+<li>Take regular eye breaks.</li>
+<li>Maintain proper posture when reading.</li>
+</ul>
+</div>
+
+
+
+<div class="card">
+<h2>Dental Health</h2>
+<p>
+Oral hygiene is an essential part of overall health. Healthy teeth and gums allow proper chewing, clear speech, and prevention of infections.
+</p>
+
+<h3>Daily Oral Care</h3>
+<ul>
+<li>Brush teeth twice daily.</li>
+<li>Use dental floss.</li>
+<li>Clean tongue while brushing.</li>
+<li>Limit sugary foods.</li>
+</ul>
+
+<h3>Long-Term Dental Health</h3>
+<ul>
+<li>Visit a dentist regularly.</li>
+<li>Replace toothbrush periodically.</li>
+<li>Maintain balanced nutrition.</li>
+<li>Avoid tobacco products.</li>
+</ul>
+</div>
+
+
+
+<div class="card">
+<h2>Healthy Weight Management</h2>
+
+<p>
+Maintaining a healthy body weight is essential for preventing chronic diseases and maintaining mobility. Weight management depends on balanced nutrition, regular physical activity, and healthy lifestyle habits.
+</p>
+
+<h3>Healthy Weight Strategies</h3>
+<ul>
+<li>Consume balanced meals.</li>
+<li>Control portion sizes.</li>
+<li>Exercise regularly.</li>
+<li>Stay hydrated.</li>
+</ul>
+
+<h3>Benefits of Healthy Weight</h3>
+<ul>
+<li>Reduced risk of heart disease.</li>
+<li>Improved mobility and flexibility.</li>
+<li>Better energy levels.</li>
+<li>Improved self-confidence.</li>
+</ul>
+</div>
+
+
+
+<div class="card">
+<h2>Healthy Aging</h2>
+<p>
+Healthy aging focuses on maintaining physical and mental health as people grow older. A balanced lifestyle supports longevity and quality of life.
+</p>
+
+<h3>Healthy Aging Practices</h3>
+<ul>
+<li>Stay physically active.</li>
+<li>Maintain social relationships.</li>
+<li>Eat nutritious meals.</li>
+<li>Continue learning and mental activities.</li>
+</ul>
+
+<h3>Benefits</h3>
+<ul>
+<li>Improved independence.</li>
+<li>Better emotional wellbeing.</li>
+<li>Reduced risk of chronic illness.</li>
+</ul>
+</div>
+
+
+
+<div class="card">
+<h2>Stress Management</h2>
+
+<p>
+Stress is a natural response to challenges and responsibilities. However, prolonged stress can negatively affect both physical and mental health. Learning to manage stress effectively helps maintain emotional balance and productivity.
+</p>
+
+<h3>Common Sources of Stress</h3>
+<ul>
+<li>Work or academic pressure.</li>
+<li>Financial challenges.</li>
+<li>Relationship conflicts.</li>
+<li>Major life changes.</li>
+</ul>
+
+<h3>Stress Reduction Techniques</h3>
+<ul>
+<li>Practice deep breathing.</li>
+<li>Engage in physical exercise.</li>
+<li>Spend time in nature.</li>
+<li>Maintain healthy sleep habits.</li>
+</ul>
+</div>
+
+
+
+<div class="card">
+<h2>Healthy Environment</h2>
+
+<p>
+Environmental health focuses on maintaining surroundings that support human wellbeing. Clean air, safe water, and proper sanitation are essential for preventing diseases and promoting community health.
+</p>
+
+<h3>Environmental Health Practices</h3>
+<ul>
+<li>Maintain clean living spaces.</li>
+<li>Ensure proper waste disposal.</li>
+<li>Reduce pollution exposure.</li>
+<li>Promote green spaces.</li>
+</ul>
+
+<h3>Benefits</h3>
+<ul>
+<li>Reduced spread of disease.</li>
+<li>Improved quality of life.</li>
+<li>Protection of natural resources.</li>
+</ul>
+</div>
+
+
+
+<div class="card">
+<h2>Healthy Relationships</h2>
+<p>
+Strong relationships contribute to emotional stability and mental health. Supportive relationships help individuals cope with stress and build resilience.
+</p>
+
+<h3>Building Healthy Relationships</h3>
+<ul>
+<li>Communicate openly.</li>
+<li>Show empathy and understanding.</li>
+<li>Respect others' opinions.</li>
+<li>Resolve conflicts peacefully.</li>
+</ul>
+
+<h3>Benefits</h3>
+<ul>
+<li>Improved emotional wellbeing.</li>
+<li>Greater social support.</li>
+<li>Stronger communities.</li>
+</ul>
+</div>
+
+
+
+<div class="card">
+<h2>Healthy Study and Work Habits</h2>
+<p>
+Healthy habits during study and work improve productivity and reduce physical strain. Proper posture and regular breaks are important for long-term health.
+</p>
+
+<h3>Productive Habits</h3>
+<ul>
+<li>Maintain good posture.</li>
+<li>Take regular breaks.</li>
+<li>Keep workspace organized.</li>
+<li>Stay hydrated.</li>
+</ul>
+
+<h3>Preventing Fatigue</h3>
+<ul>
+<li>Stretch periodically.</li>
+<li>Maintain proper lighting.</li>
+<li>Avoid prolonged sitting.</li>
+<li>Practice time management.</li>
+</ul>
+</div>
+
+
+
+<div class="card">
+<h2>Community Health Awareness</h2>
+
+<p>
+Community health focuses on improving the wellbeing of groups of people through education, awareness, and preventive programs. Healthy communities create environments that support healthy lifestyles for everyone.
+</p>
+
+<h3>Community Health Actions</h3>
+<ul>
+<li>Promote health education.</li>
+<li>Encourage vaccination programs.</li>
+<li>Support clean environment initiatives.</li>
+<li>Organize physical activity programs.</li>
+</ul>
+
+<h3>Importance</h3>
+<ul>
+<li>Improves overall population health.</li>
+<li>Reduces disease transmission.</li>
+<li>Encourages cooperation and support.</li>
+</ul>
+</div>
+
+<footer>© 2026 HB Creations | Health & Everyday Life | Made with ❤</footer>
+</div>
+</div>
+
+<!-- ================= MOBILE VERSION ================= -->
+<div id="mobileVersion">
+  <div class="main-title">
+    <div id="menu-button">☰</div>
+    <div class="letters">
+      <a href="index.html">H</a>
+      <a href="health-advice.html" class="active">A</a>
+      <a href="body-structure.html">S</a>
+      <a href="nature.html">N</a>
+    </div>
+  </div>
+
+  <div id="sidebar">
+    <div class="sidebar-section">
+     <h22>Menu</h22>
+<ul>
+<li><a href="index.html">🏠 Home</a></li>
+<li><a href="health-advice.html" class="active">🩺 Health Advice</a></li>
+<li><a href="body-structure.html">🧬 Body Structure</a></li>
+<li><a href="nature.html">🌿 Nature</a></li>
+</ul>
+</div>
+
+    <div class="sidebar-section">
+      <ul>
+        <li><a href="daily-exercise.html">🏃 Daily Exercise</a></li>
+        <li><a href="articles.html">📚 Articles</a></li>
+        <li><a href="community.html">👥 Community</a></li>
+      </ul>
+    </div>
+
+    <div class="sidebar-section">
+      <h2>Additional</h2>
+      <ul>
+        <li><a href="quiz.html">❓ Quiz</a></li>
+        <li><a href="bmi-calculator.html">⚖️ BMI Calculator</a></li>
+        <li><a href="gallery.html">🖼️ Gallery</a></li>
+      </ul>
+    </div>
+
+    <div class="sidebar-section">
+      <h2>Info</h2>
+      <ul>
+        <li><a href="connect.html">📞 Contact</a></li>
+        <li><a href="about.html">ℹ️ About Us</a></li>
+        <li><a style="text-decoration:none;color:#1877f2;" href="https://www.facebook.com/harish.bhatta.56305" target="_blank">🌐 Facebook</a></li>
+        <li><a style="text-decoration:none;color:#ff0000;" href="https://www.youtube.com/channel/UCe1apgoO7x9BH3MdeJGWbHQ" target="_blank">▶ YouTube</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <div id="menuOverlay"></div>
+
+<div class="main">
+<div class="section-title">Health Advice</div>
+
+<div class="card">
+<h2>Nutrition and Diet</h2>
+
+<p>
+Nutrition is one of the most important foundations of human health. The food people eat every day directly affects energy levels, growth, immunity, mental clarity, and long-term disease prevention. A balanced diet provides the body with the nutrients it needs to function properly. These nutrients include carbohydrates for energy, proteins for growth and repair, fats for brain and hormone function, vitamins and minerals for regulation of body processes, and fiber for healthy digestion.
+</p>
+
+<p>
+Poor dietary habits can lead to many health problems such as obesity, diabetes, heart disease, and nutritional deficiencies. On the other hand, healthy eating patterns help maintain body strength, support mental wellbeing, improve concentration, and increase longevity. Developing good eating habits early in life is especially important because they shape long-term health outcomes.
+</p>
+
+<h3>Major Nutrients Required by the Body</h3>
+<ul>
+<li><strong>Carbohydrates:</strong> Carbohydrates are the main source of energy for the body. Foods such as rice, wheat, maize, potatoes, and whole grains provide carbohydrates needed for daily physical and mental activities.</li>
+<li><strong>Proteins:</strong> Proteins help build muscles, repair tissues, and produce enzymes and hormones. Good protein sources include eggs, milk, fish, lentils, beans, soybeans, and nuts.</li>
+<li><strong>Healthy Fats:</strong> Healthy fats support brain development and hormone production. They are found in foods such as nuts, seeds, avocados, and vegetable oils.</li>
+<li><strong>Vitamins:</strong> Vitamins are essential for immunity, vision, skin health, and metabolism. Fruits and vegetables are rich sources of vitamins.</li>
+<li><strong>Minerals:</strong> Minerals such as calcium, iron, potassium, and magnesium help maintain strong bones, healthy blood, and proper nerve function.</li>
+<li><strong>Fiber:</strong> Dietary fiber improves digestion and prevents constipation. Whole grains, fruits, vegetables, and legumes contain high amounts of fiber.</li>
+</ul>
+
+<h3>Principles of Balanced Eating</h3>
+<ul>
+<li>Eat a variety of foods from different food groups every day.</li>
+<li>Include colorful fruits and vegetables to obtain diverse nutrients.</li>
+<li>Prefer whole grains instead of refined grains.</li>
+<li>Choose natural and minimally processed foods.</li>
+<li>Limit foods high in sugar, salt, and unhealthy fats.</li>
+<li>Drink sufficient water to maintain hydration.</li>
+</ul>
+
+<h3>Daily Healthy Eating Practices</h3>
+<ul>
+<li>Start the day with a nutritious breakfast that includes protein and fiber.</li>
+<li>Eat meals at regular intervals to maintain stable energy levels.</li>
+<li>Avoid skipping meals because it may lead to overeating later.</li>
+<li>Chew food slowly to improve digestion.</li>
+<li>Maintain appropriate portion sizes.</li>
+<li>Choose seasonal and locally available foods for freshness.</li>
+</ul>
+
+<h3>Common Dietary Mistakes to Avoid</h3>
+<ul>
+<li>Consuming excessive sugary drinks and snacks.</li>
+<li>Relying heavily on processed and fast foods.</li>
+<li>Eating very late at night.</li>
+<li>Ignoring hydration needs.</li>
+<li>Following extreme or unbalanced diets.</li>
+</ul>
+
+<h3>Importance of Hydration</h3>
+<p>
+Water is essential for nearly every function in the body. It regulates body temperature, transports nutrients, removes waste products, and supports cellular processes. Drinking sufficient water throughout the day helps maintain energy levels and prevents dehydration.
+</p>
+
+<ul>
+<li>Drink 6–8 glasses of water daily.</li>
+<li>Increase water intake during hot weather or physical activity.</li>
+<li>Limit sugary beverages and caffeinated drinks.</li>
+<li>Include hydrating foods such as fruits and vegetables.</li>
+</ul>
+</div>
+
+
+
+<div class="card">
+<h2>Preventive Healthcare</h2>
+
+<p>
+Preventive healthcare focuses on maintaining health and preventing diseases before they occur. Many serious health conditions can be avoided or minimized through early detection, healthy lifestyle habits, and regular health monitoring. Prevention not only improves quality of life but also reduces medical expenses and long-term health complications.
+</p>
+
+<p>
+A proactive approach to health includes maintaining hygiene, receiving vaccinations, attending regular medical checkups, and being aware of potential health risks. Education about preventive health practices empowers individuals to make informed decisions that protect both personal and community health.
+</p>
+
+<h3>Importance of Regular Health Checkups</h3>
+<ul>
+<li>Helps detect health problems at an early stage.</li>
+<li>Allows monitoring of important health indicators such as blood pressure and cholesterol.</li>
+<li>Provides an opportunity for professional health guidance.</li>
+<li>Ensures timely vaccination and preventive treatments.</li>
+</ul>
+
+<h3>Vaccination and Disease Prevention</h3>
+<ul>
+<li>Vaccines protect against many infectious diseases.</li>
+<li>Following vaccination schedules helps build immunity.</li>
+<li>Vaccination protects both individuals and communities.</li>
+<li>Consult healthcare professionals regarding recommended vaccines.</li>
+</ul>
+
+<h3>Hygiene and Sanitation Practices</h3>
+<ul>
+<li>Wash hands thoroughly before meals and after using the restroom.</li>
+<li>Maintain clean living environments.</li>
+<li>Use safe drinking water.</li>
+<li>Practice proper food preparation and storage.</li>
+<li>Dispose of waste responsibly to prevent disease spread.</li>
+</ul>
+
+<h3>Environmental Health and Safety</h3>
+<ul>
+<li>Avoid exposure to harmful chemicals and pollutants.</li>
+<li>Ensure good ventilation in living spaces.</li>
+<li>Use protective equipment during risky activities.</li>
+<li>Follow road and workplace safety rules.</li>
+</ul>
+
+<h3>Healthy Lifestyle Habits</h3>
+<ul>
+<li>Engage in regular physical activity.</li>
+<li>Maintain balanced nutrition.</li>
+<li>Get adequate sleep each night.</li>
+<li>Avoid harmful substances such as tobacco and excessive alcohol.</li>
+<li>Manage stress effectively.</li>
+</ul>
+
+<p>
+Preventive healthcare is not limited to hospitals and clinics. Daily lifestyle choices play a significant role in preventing diseases and maintaining long-term health. Awareness, education, and consistent healthy behaviors form the foundation of preventive health.
+</p>
+</div>
+
+
+
+<div class="card">
+<h2>Mental Health Advice</h2>
+
+<p>
+Mental health is a crucial aspect of overall wellbeing. It affects how people think, feel, behave, and interact with others. A healthy mind enables individuals to cope with stress, work productively, and maintain meaningful relationships. Mental health challenges can affect anyone and should be addressed with understanding and support.
+</p>
+
+<p>
+Maintaining mental health requires attention to emotional balance, stress management, social connections, and self-care. Positive mental health contributes to improved decision-making, stronger resilience, and greater life satisfaction.
+</p>
+
+<h3>Factors Affecting Mental Health</h3>
+<ul>
+<li>Stress from work, studies, or personal responsibilities.</li>
+<li>Sleep quality and daily routines.</li>
+<li>Social relationships and emotional support.</li>
+<li>Physical health and nutrition.</li>
+<li>Environmental conditions and lifestyle habits.</li>
+</ul>
+
+<h3>Practices for Maintaining Mental Wellbeing</h3>
+<ul>
+<li>Practice mindfulness or meditation regularly.</li>
+<li>Engage in hobbies and creative activities.</li>
+<li>Maintain positive social connections.</li>
+<li>Spend time outdoors and connect with nature.</li>
+<li>Maintain a balanced daily schedule.</li>
+</ul>
+
+<h3>Stress Management Techniques</h3>
+<ul>
+<li>Deep breathing exercises.</li>
+<li>Regular physical exercise.</li>
+<li>Time management and prioritization.</li>
+<li>Relaxation activities such as reading or music.</li>
+<li>Seeking emotional support when needed.</li>
+</ul>
+
+<h3>Healthy Digital Habits</h3>
+<ul>
+<li>Limit excessive screen time.</li>
+<li>Take breaks during long periods of device use.</li>
+<li>Avoid using electronic devices immediately before sleep.</li>
+<li>Engage in offline activities to maintain balance.</li>
+</ul>
+
+<p>
+Mental health should be treated with the same importance as physical health. When individuals prioritize mental wellbeing, they build resilience and develop the ability to face life’s challenges more effectively.
+</p>
+</div>
+
+
+
+<div class="card">
+<h2>Healthy Daily Lifestyle</h2>
+
+<p>
+A healthy lifestyle is built through consistent daily habits. Small positive choices made each day accumulate over time to produce significant improvements in health and wellbeing. Developing structured routines helps maintain productivity, physical fitness, and emotional balance.
+</p>
+
+<h3>Healthy Morning Routine</h3>
+<ul>
+<li>Wake up early to align with natural body rhythms.</li>
+<li>Drink a glass of water to rehydrate the body.</li>
+<li>Perform light stretching or exercise.</li>
+<li>Eat a nutritious breakfast.</li>
+<li>Plan tasks and goals for the day.</li>
+</ul>
+
+<h3>Productive Daily Habits</h3>
+<ul>
+<li>Maintain good posture while studying or working.</li>
+<li>Take regular breaks to reduce fatigue.</li>
+<li>Stay physically active throughout the day.</li>
+<li>Practice positive thinking and gratitude.</li>
+<li>Maintain cleanliness and organization.</li>
+</ul>
+
+<h3>Healthy Evening Routine</h3>
+<ul>
+<li>Eat dinner at a reasonable time.</li>
+<li>Limit heavy meals late at night.</li>
+<li>Reflect on the day’s achievements.</li>
+<li>Reduce screen exposure before bedtime.</li>
+<li>Sleep early to allow proper rest and recovery.</li>
+</ul>
+
+<p>
+Consistent healthy routines improve physical strength, mental clarity, and emotional stability. Over time, these habits create a balanced lifestyle that supports long-term wellbeing.
+</p>
+</div>
+
+<div class="card">
+<h2>Personal Hygiene</h2>
+
+<p>
+Personal hygiene refers to the practices individuals follow to maintain cleanliness and protect themselves from diseases. Maintaining hygiene reduces the spread of bacteria, viruses, and parasites that can cause infections. Good hygiene also promotes confidence, comfort, and social wellbeing. Many infectious diseases spread primarily because of poor hygiene practices, which makes cleanliness one of the most important aspects of public health.
+</p>
+
+<p>
+Personal hygiene habits should be practiced consistently every day. These practices include body cleanliness, oral hygiene, proper clothing hygiene, and maintaining clean surroundings. Teaching hygiene practices early in life helps individuals develop habits that last throughout their lifetime.
+</p>
+
+<h3>Daily Hygiene Practices</h3>
+<ul>
+<li>Wash hands thoroughly with soap before eating and after using the restroom.</li>
+<li>Bathe regularly to remove dirt, sweat, and harmful microorganisms.</li>
+<li>Brush teeth at least twice daily.</li>
+<li>Trim and clean fingernails regularly.</li>
+<li>Wear clean clothes and change them frequently.</li>
+<li>Keep hair clean and properly maintained.</li>
+</ul>
+
+<h3>Preventing Spread of Infection</h3>
+<ul>
+<li>Cover mouth and nose when coughing or sneezing.</li>
+<li>Avoid touching the face with unwashed hands.</li>
+<li>Do not share personal items such as towels or toothbrushes.</li>
+<li>Keep living environments clean and well ventilated.</li>
+<li>Dispose of waste properly.</li>
+</ul>
+</div>
+
+
+
+<div class="card">
+<h2>Sleep and Rest</h2>
+
+<p>
+Sleep is essential for maintaining physical health, mental clarity, and emotional stability. During sleep, the body performs many important functions such as repairing tissues, strengthening immunity, and processing information learned during the day. Lack of sleep can lead to fatigue, poor concentration, weakened immunity, and long-term health problems.
+</p>
+
+<p>
+Healthy sleep habits help improve productivity, mood, and overall wellbeing. A consistent sleep routine ensures that the body’s natural biological clock functions properly.
+</p>
+
+<h3>Benefits of Proper Sleep</h3>
+<ul>
+<li>Improves memory and learning ability.</li>
+<li>Supports immune system function.</li>
+<li>Enhances mood and emotional stability.</li>
+<li>Promotes healthy growth and development.</li>
+<li>Helps regulate hormones and metabolism.</li>
+</ul>
+
+<h3>Healthy Sleep Habits</h3>
+<ul>
+<li>Maintain a consistent sleep schedule.</li>
+<li>Sleep at least 7–8 hours each night.</li>
+<li>Avoid heavy meals before bedtime.</li>
+<li>Limit screen use before sleeping.</li>
+<li>Create a quiet, comfortable sleeping environment.</li>
+</ul>
+</div>
+
+
+
+<div class="card">
+<h2>Physical Activity</h2>
+
+<p>
+Physical activity is essential for maintaining a healthy body and preventing many chronic diseases. Regular exercise strengthens muscles, improves cardiovascular health, increases energy levels, and supports mental wellbeing. Even moderate physical activity can significantly improve overall health.
+</p>
+
+<p>
+Incorporating exercise into daily routines helps individuals maintain physical fitness and develop long-term healthy habits. Activities such as walking, cycling, swimming, and sports can contribute to better health.
+</p>
+
+<h3>Types of Physical Activity</h3>
+<ul>
+<li>Aerobic activities such as walking, running, and cycling.</li>
+<li>Strength training to build muscles.</li>
+<li>Stretching exercises to improve flexibility.</li>
+<li>Balance exercises for coordination.</li>
+</ul>
+
+<h3>Benefits of Exercise</h3>
+<ul>
+<li>Improves heart and lung health.</li>
+<li>Maintains healthy body weight.</li>
+<li>Reduces stress and anxiety.</li>
+<li>Strengthens bones and muscles.</li>
+<li>Improves sleep quality.</li>
+</ul>
+</div>
+
+
+
+<div class="card">
+<h2>Heart Health</h2>
+
+<p>
+The heart is a vital organ responsible for pumping blood throughout the body. Maintaining heart health is essential for preventing cardiovascular diseases, which are among the leading causes of illness worldwide. A healthy heart ensures efficient circulation of oxygen and nutrients to all body tissues.
+</p>
+
+<p>
+Lifestyle choices such as diet, exercise, stress management, and avoiding harmful habits significantly influence heart health.
+</p>
+
+<h3>Healthy Heart Habits</h3>
+<ul>
+<li>Eat a balanced diet low in saturated fats.</li>
+<li>Engage in regular physical activity.</li>
+<li>Maintain healthy body weight.</li>
+<li>Avoid smoking and harmful substances.</li>
+<li>Monitor blood pressure regularly.</li>
+</ul>
+
+<h3>Risk Factors to Avoid</h3>
+<ul>
+<li>High salt consumption.</li>
+<li>Lack of physical activity.</li>
+<li>Chronic stress.</li>
+<li>Unhealthy diet patterns.</li>
+</ul>
+</div>
+
+
+
+<div class="card">
+<h2>Digestive Health</h2>
+
+<p>
+The digestive system plays a crucial role in breaking down food, absorbing nutrients, and eliminating waste. Maintaining digestive health ensures that the body receives essential nutrients required for energy, growth, and repair.
+</p>
+
+<p>
+Poor digestion can cause discomfort, fatigue, and nutritional deficiencies. Proper dietary habits and hydration help maintain healthy digestive function.
+</p>
+
+<h3>Practices for Healthy Digestion</h3>
+<ul>
+<li>Consume fiber-rich foods.</li>
+<li>Drink adequate water.</li>
+<li>Eat meals at regular times.</li>
+<li>Chew food slowly.</li>
+<li>Avoid excessive processed foods.</li>
+</ul>
+
+<h3>Foods That Support Digestion</h3>
+<ul>
+<li>Whole grains.</li>
+<li>Fruits and vegetables.</li>
+<li>Yogurt and probiotic foods.</li>
+<li>Legumes and beans.</li>
+</ul>
+</div>
+
+
+
+<div class="card">
+<h2>Immune System Care</h2>
+
+<p>
+The immune system protects the body from harmful microorganisms such as bacteria, viruses, and parasites. A strong immune system helps prevent infections and supports recovery from illness.
+</p>
+
+<p>
+Maintaining immunity requires a combination of healthy lifestyle habits including balanced nutrition, adequate sleep, regular exercise, and stress management.
+</p>
+
+<h3>Ways to Strengthen Immunity</h3>
+<ul>
+<li>Eat nutrient-rich foods.</li>
+<li>Maintain regular physical activity.</li>
+<li>Sleep adequately.</li>
+<li>Stay hydrated.</li>
+<li>Reduce stress levels.</li>
+</ul>
+
+<h3>Immune Supporting Nutrients</h3>
+<ul>
+<li>Vitamin C</li>
+<li>Vitamin D</li>
+<li>Zinc</li>
+<li>Antioxidants</li>
+</ul>
+</div>
+
+
+
+<div class="card">
+<h2>Eye Health</h2>
+<p>
+Healthy vision is essential for daily life. Proper eye care helps prevent vision problems and supports long-term eye health.
+</p>
+
+<h3>Eye Care Practices</h3>
+<ul>
+<li>Limit screen exposure.</li>
+<li>Follow the 20-20-20 rule during computer use.</li>
+<li>Use adequate lighting while reading.</li>
+<li>Eat foods rich in vitamin A.</li>
+</ul>
+
+<h3>Protecting Vision</h3>
+<ul>
+<li>Wear protective eyewear when necessary.</li>
+<li>Avoid rubbing eyes frequently.</li>
+<li>Take regular eye breaks.</li>
+<li>Maintain proper posture when reading.</li>
+</ul>
+</div>
+
+
+
+<div class="card">
+<h2>Dental Health</h2>
+<p>
+Oral hygiene is an essential part of overall health. Healthy teeth and gums allow proper chewing, clear speech, and prevention of infections.
+</p>
+
+<h3>Daily Oral Care</h3>
+<ul>
+<li>Brush teeth twice daily.</li>
+<li>Use dental floss.</li>
+<li>Clean tongue while brushing.</li>
+<li>Limit sugary foods.</li>
+</ul>
+
+<h3>Long-Term Dental Health</h3>
+<ul>
+<li>Visit a dentist regularly.</li>
+<li>Replace toothbrush periodically.</li>
+<li>Maintain balanced nutrition.</li>
+<li>Avoid tobacco products.</li>
+</ul>
+</div>
+
+
+
+<div class="card">
+<h2>Healthy Weight Management</h2>
+
+<p>
+Maintaining a healthy body weight is essential for preventing chronic diseases and maintaining mobility. Weight management depends on balanced nutrition, regular physical activity, and healthy lifestyle habits.
+</p>
+
+<h3>Healthy Weight Strategies</h3>
+<ul>
+<li>Consume balanced meals.</li>
+<li>Control portion sizes.</li>
+<li>Exercise regularly.</li>
+<li>Stay hydrated.</li>
+</ul>
+
+<h3>Benefits of Healthy Weight</h3>
+<ul>
+<li>Reduced risk of heart disease.</li>
+<li>Improved mobility and flexibility.</li>
+<li>Better energy levels.</li>
+<li>Improved self-confidence.</li>
+</ul>
+</div>
+
+
+
+<div class="card">
+<h2>Healthy Aging</h2>
+<p>
+Healthy aging focuses on maintaining physical and mental health as people grow older. A balanced lifestyle supports longevity and quality of life.
+</p>
+
+<h3>Healthy Aging Practices</h3>
+<ul>
+<li>Stay physically active.</li>
+<li>Maintain social relationships.</li>
+<li>Eat nutritious meals.</li>
+<li>Continue learning and mental activities.</li>
+</ul>
+
+<h3>Benefits</h3>
+<ul>
+<li>Improved independence.</li>
+<li>Better emotional wellbeing.</li>
+<li>Reduced risk of chronic illness.</li>
+</ul>
+</div>
+
+
+
+<div class="card">
+<h2>Stress Management</h2>
+
+<p>
+Stress is a natural response to challenges and responsibilities. However, prolonged stress can negatively affect both physical and mental health. Learning to manage stress effectively helps maintain emotional balance and productivity.
+</p>
+
+<h3>Common Sources of Stress</h3>
+<ul>
+<li>Work or academic pressure.</li>
+<li>Financial challenges.</li>
+<li>Relationship conflicts.</li>
+<li>Major life changes.</li>
+</ul>
+
+<h3>Stress Reduction Techniques</h3>
+<ul>
+<li>Practice deep breathing.</li>
+<li>Engage in physical exercise.</li>
+<li>Spend time in nature.</li>
+<li>Maintain healthy sleep habits.</li>
+</ul>
+</div>
+
+
+
+<div class="card">
+<h2>Healthy Environment</h2>
+
+<p>
+Environmental health focuses on maintaining surroundings that support human wellbeing. Clean air, safe water, and proper sanitation are essential for preventing diseases and promoting community health.
+</p>
+
+<h3>Environmental Health Practices</h3>
+<ul>
+<li>Maintain clean living spaces.</li>
+<li>Ensure proper waste disposal.</li>
+<li>Reduce pollution exposure.</li>
+<li>Promote green spaces.</li>
+</ul>
+
+<h3>Benefits</h3>
+<ul>
+<li>Reduced spread of disease.</li>
+<li>Improved quality of life.</li>
+<li>Protection of natural resources.</li>
+</ul>
+</div>
+
+
+
+<div class="card">
+<h2>Healthy Relationships</h2>
+<p>
+Strong relationships contribute to emotional stability and mental health. Supportive relationships help individuals cope with stress and build resilience.
+</p>
+
+<h3>Building Healthy Relationships</h3>
+<ul>
+<li>Communicate openly.</li>
+<li>Show empathy and understanding.</li>
+<li>Respect others' opinions.</li>
+<li>Resolve conflicts peacefully.</li>
+</ul>
+
+<h3>Benefits</h3>
+<ul>
+<li>Improved emotional wellbeing.</li>
+<li>Greater social support.</li>
+<li>Stronger communities.</li>
+</ul>
+</div>
+
+
+
+<div class="card">
+<h2>Healthy Study and Work Habits</h2>
+<p>
+Healthy habits during study and work improve productivity and reduce physical strain. Proper posture and regular breaks are important for long-term health.
+</p>
+
+<h3>Productive Habits</h3>
+<ul>
+<li>Maintain good posture.</li>
+<li>Take regular breaks.</li>
+<li>Keep workspace organized.</li>
+<li>Stay hydrated.</li>
+</ul>
+
+<h3>Preventing Fatigue</h3>
+<ul>
+<li>Stretch periodically.</li>
+<li>Maintain proper lighting.</li>
+<li>Avoid prolonged sitting.</li>
+<li>Practice time management.</li>
+</ul>
+</div>
+
+
+
+<div class="card">
+<h2>Community Health Awareness</h2>
+
+<p>
+Community health focuses on improving the wellbeing of groups of people through education, awareness, and preventive programs. Healthy communities create environments that support healthy lifestyles for everyone.
+</p>
+
+<h3>Community Health Actions</h3>
+<ul>
+<li>Promote health education.</li>
+<li>Encourage vaccination programs.</li>
+<li>Support clean environment initiatives.</li>
+<li>Organize physical activity programs.</li>
+</ul>
+
+<h3>Importance</h3>
+<ul>
+<li>Improves overall population health.</li>
+<li>Reduces disease transmission.</li>
+<li>Encourages cooperation and support.</li>
+</ul>
+</div>
+
+<footer>© 2026 HB Creations | Made with ❤</footer>
+</div>
+</div>
+<script>
+// Grab elements
+const menuButton = document.getElementById("menu-button");
+const sidebar = document.getElementById("sidebar");
+const overlay = document.getElementById("menuOverlay");
+
+function openSidebar() {
+  sidebar.classList.add("open");
+  overlay.classList.add("active");
+  document.body.style.overflow = 'hidden';
+  window.scrollTo({ top: 0, behavior: 'smooth' }); // scroll page to top
+  history.pushState({ menu: true }, "");
+}
+
+// Close sidebar function
+function closeSidebar() {
+  sidebar.classList.remove("open");
+  overlay.classList.remove("active");
+  document.body.style.overflow = '';
+}
+
+// Toggle sidebar
+function toggleSidebar() {
+  if (sidebar.classList.contains("open")) {
+    closeSidebar();
+  } else {
+    openSidebar();
+  }
+}
+
+// Event listeners
+menuButton.addEventListener("click", toggleSidebar);
+overlay.addEventListener("click", closeSidebar);
+
+// Close if clicking outside sidebar (except menu button)
+document.addEventListener("click", (e) => {
+  if (sidebar.classList.contains("open") &&
+      !sidebar.contains(e.target) &&
+      e.target !== menuButton) {
+    closeSidebar();
+  }
+});
+
+// Swipe gesture (right → left closes sidebar)
+let touchStartX = 0;
+let touchEndX = 0;
+document.addEventListener("touchstart", (e) => { touchStartX = e.changedTouches[0].screenX; });
+document.addEventListener("touchend", (e) => { touchEndX = e.changedTouches[0].screenX; handleSwipe(); });
+function handleSwipe() {
+  if (sidebar.classList.contains("open")) {
+    if (touchStartX - touchEndX > 60) { closeSidebar(); }
+  }
+}
+
+// Mobile back button closes sidebar
+window.addEventListener("popstate", () => {
+  if (sidebar.classList.contains("open")) { closeSidebar(); }
+});
+</script>
+</body>
+</html>

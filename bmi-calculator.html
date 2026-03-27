@@ -1,0 +1,638 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>HB Creations – BMI Calculator</title>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<style>
+/* RESET */
+* {margin:0; padding:0; box-sizing:border-box; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; color:#000;}
+
+/* Hide both initially */
+#pcVersion, #mobileVersion {display:none;}
+
+/* Show mobile */
+@media (max-width:768px){#mobileVersion{display:block;}}
+
+/* Show desktop */
+@media (min-width:769px){#pcVersion{display:block;}}
+
+/* ================= PC Styles ================= */
+#pcVersion .sidebar{
+position:fixed; top:0; left:0; width:360px; height:100vh; background:white; border-right:1px solid #ddd; overflow-y:auto; padding:20px; scrollbar-width:none; transition:all 0.3s ease;
+}
+#pcVersion .sidebar-section{
+margin-bottom:25px; padding:15px; border-radius:12px; background:linear-gradient(135deg,#ffecd2,#fad090); transition:0.3s;
+}
+#pcVersion .sidebar-section h2{margin-bottom:10px;}
+#pcVersion .sidebar-section ul{list-style:none;}
+#pcVersion .sidebar-section li{margin:8px 0; font-weight:500;}
+#pcVersion .sidebar-section li a{
+text-decoration:none; color:#000; display:block; padding:4px 12px; border-radius:10px; transition:all 0.25s ease;
+}
+#pcVersion .sidebar-section li a:hover{background:rgba(255,255,255,0.5); color:#ff4f79; font-weight:700;}
+#pcVersion .sidebar-section li a.active{background:rgba(255,255,255,0.9); color:#ff4f79; font-weight:700;}
+
+#pcVersion .main{margin-left:360px; padding:30px; flex:1; height:100vh; overflow-y:auto; scrollbar-width:thin; scrollbar-color:#bbb transparent;}
+#pcVersion .main::-webkit-scrollbar{width:6px;}
+#pcVersion .main::-webkit-scrollbar-track{background:transparent;}
+#pcVersion .main::-webkit-scrollbar-thumb{background:#bbb;border-radius:10px;}
+#pcVersion .main::-webkit-scrollbar-thumb:hover{background:#888;}
+
+#pcVersion .main-title{
+text-align:center; background:linear-gradient(135deg,#ff9a9e,#fad0c4,#fad090); padding:25px 15px; border-radius:12px; color:#fff; font-size:2.2rem; margin-bottom:30px; font-weight:700;
+}
+
+#pcVersion .main h2{font-size:1.6rem; margin-bottom:10px; font-weight:600;}
+#pcVersion .card{padding:20px; margin-bottom:20px; border-radius:10px; color:#000; line-height:1.8;}
+#pcVersion .card ul{list-style:disc; margin-left:20px;}
+#pcVersion .card:nth-child(even){background:linear-gradient(135deg,#ffecd2,#fad090);}
+#pcVersion .card:nth-child(odd){background:linear-gradient(135deg,#ff9a9e,#fad0c4);}
+
+/* BMI TWO-COLUMN */
+#pcVersion .card-column h3{font-size:2rem; color: #ff0080; margin-bottom:10px;}
+#pcVersion .card-column p, .card-column ul li{font-size:1.3rem; margin-bottom:8px; color:#333;}
+
+/* INPUTS */
+#pcVersion .card-column input[type="number"] {
+    padding:10px; font-size:1.2rem; border-radius:8px; border:1px solid #ccc; margin-right:5px;
+}
+#weight {width:200px;}
+#height {width:200px;} /* fixed width for cm */
+#heightInch {width:95px; display:none;}
+#pcVersion .card-column select {
+    padding:6px 10px; border-radius:6px; font-size:1rem; background:#ffd9e8; margin-left:15px; cursor:pointer;
+}
+
+/* BUTTONS */
+#pcVersion .card-column button {
+    padding:10px 15px; font-size:1.2rem; border-radius:8px; cursor:pointer; font-weight:600; border:none; margin-top:6px;
+}
+
+#pcVersion footer{
+text-align:center; padding:20px; font-size:1rem; font-weight:600; background:linear-gradient(135deg,#ff9f9f,#fad0c4); color:#000; border-radius:10px; line-height:1.6;
+}
+
+/* ================= Mobile Styles ================= */
+#mobileVersion *{
+   -webkit-tap-highlight-color: rgba(255,255,255,0.5);
+}
+#mobileVersion .main-title{
+ display:flex; justify-content:space-between; align-items:center;
+ background:linear-gradient(135deg,#ff9a9e,#fad0c4,#fad090);
+ margin:10px 15px 0px 15px; padding:5px 20px; border-radius:12px;
+ font-size:1.6rem; font-weight:400; position: relative;
+}
+#mobileVersion .letters{display:flex; gap:20px; margin-left:50px;}
+#mobileVersion .letters a{text-decoration:none; color:#000; padding:8px 15px; border-radius:25px; font-weight:500; transition: all .3s;}
+#mobileVersion .letters a.active{font-weight:550; background: rgba(255,255,255,0.9);}
+
+#mobileVersion #menu-button{position:absolute; top:-1%; left:5px; z-index:5000; cursor:pointer; font-size:1.8rem; background:transparent; padding:10px 15px; border-radius:10px;}
+#mobileVersion #sidebar{
+position:fixed; top:0; left:-260px; width:260px; height:100%; background:#fff; z-index:1400; padding:10px; transition:left 0.4s; box-shadow:2px 0 12px rgba(0,0,0,0.2); overflow-y:auto;
+}
+#mobileVersion #sidebar.open{left:0;}
+#mobileVersion .sidebar-section{margin-bottom:5px; padding:15px; border-radius:12px; background:linear-gradient(135deg,#ffecd2,#fad090);}
+#mobileVersion .sidebar-section h22{
+  font-size:1.6rem;
+  margin-bottom:10px;
+  font-weight:100;
+  margin-left: 45px;
+}
+#mobileVersion .sidebar-section h2{font-size:1.6rem; margin-bottom:10px; font-weight:100; margin-left:10px;}
+#mobileVersion .sidebar-section ul{list-style:none;}
+#mobileVersion .sidebar-section li{margin:8px 0; font-weight:500;}
+#mobileVersion .sidebar-section li a{text-decoration:none; color:#000; display:block; padding:4px 12px; border-radius:10px; transition:all 0.25s ease;}
+#mobileVersion .sidebar-section li a:hover{background:rgba(255,255,255,0.5); color:#ff4f79; font-weight:700;}
+#mobileVersion .sidebar-section li a.active{background:rgba(255,255,255,0.9); color:#ff4f79; font-weight:700;}
+
+#mobileVersion #menuOverlay{position:fixed; top:0; left:0; width:100%; height:100%; background: rgba(0,0,0,0.2); z-index:1300; display:none;}
+#mobileVersion #menuOverlay.active{display:block;}
+
+#mobileVersion .main{margin:5px; padding:10px; flex:1; overflow-y:auto; scrollbar-width:thin; scrollbar-color:#bbb transparent;}
+#mobileVersion .main::-webkit-scrollbar{width:6px;}
+#mobileVersion .main::-webkit-scrollbar-track{background:transparent;}
+#mobileVersion .main::-webkit-scrollbar-thumb{background:#bbb;border-radius:10px;}
+#mobileVersion .main::-webkit-scrollbar-thumb:hover{background:#888;}
+
+#mobileVersion .section-title{text-align:center; background:linear-gradient(135deg,#ff9a9e,#fad0c4,#fad090); padding:10px 10px; border-radius:12px; color:#fff; font-size:1.9rem; margin-bottom:15px; font-weight:700;}
+#mobileVersion .card{padding:20px; margin-bottom:20px; border-radius:10px; color:#000; line-height:1.8;}
+#mobileVersion .card h2{font-size:1.5rem; margin-bottom:5px; font-weight:700; margin-left: -2px;}
+#mobileVersion .card ul{list-style:disc; margin-left:20px;}
+#mobileVersion .card:nth-child(odd){background:linear-gradient(135deg,#ffecd2,#fad090);}
+#mobileVersion .card:nth-child(even){background:linear-gradient(135deg,#ff9a9e,#fad0c4);}
+
+#mobileVersion .card-column h3{font-size:2rem; color: #ff0080; margin-bottom:10px;}
+#mobileVersion .card-column p, .card-column ul li{font-size:1.3rem; margin-bottom:8px; color:#333;}
+
+#mobileVersion .card-column{padding:20px; margin-bottom:20px; border-radius:10px; color:#000; line-height:1.8;}
+#mobileVersion .card-column ul{list-style:disc; margin-left:20px;}
+#mobileVersion .card-column:nth-child(odd){background:linear-gradient(135deg,#ffecd2,#fad090);}
+#mobileVersion .card-column:nth-child(even){background:linear-gradient(135deg,#ff9a9e,#fad0c4);}
+
+/* INPUTS */
+#mobileVersion .card-column input[type="number"] {
+    padding:10px; font-size:1.2rem; border-radius:8px; border:1px solid #ccc; margin-right:5px;
+}
+
+/* Weight input on Mobile */
+#m_weight {
+  width: 175px;
+  padding: 8px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  font-size: 1rem;
+}
+
+#mobileVersion#m_height
+/* Height input container classes */
+width: 175px;
+  padding: 8px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  font-size: 1rem;
+}
+
+
+/* Height inch input on Mobile */
+#m_heightInch {
+  padding: 8px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  font-size: 1rem;
+}
+
+/* Mobile equal width inputs */
+#mobileVersion .bmi-equal {
+    width: 100%;        /* full width of parent container */
+    max-width: 170px;   /* optional max width */
+    box-sizing: border-box;
+}
+
+#mobileVersion .bmi-equal1 {
+    width: 100%;        /* full width of parent container */
+    max-width: 175px;   /* optional max width */
+    box-sizing: border-box;
+}
+
+/* BMI select */
+#mobileVersion .bmi-input-select { padding:8px; border-radius:6px; border:1px solid #ccc; font-size:1rem; }
+
+/* BUTTONS */
+#mobileVersion .card-column button {
+    padding:10px 15px; font-size:1.2rem; border-radius:8px; cursor:pointer; font-weight:600; border:none; margin-top:6px;
+}
+  
+#mobileVersion footer{margin-top:20px; padding:20px; text-align:center; color: #fff; background:linear-gradient(135deg,#ff9f9f,#fad0c4); border-radius:10px;}
+
+/* PC adjustments inside mobile */
+@media(min-width:1025px){
+  #mobileVersion #sidebar{left:0 !important; width:360px; box-shadow:none;}
+  #mobileVersion .main{margin-left:360px; padding:30px;}
+  #mobileVersion #menu-button, #menuOverlay{display:none;}
+}
+</style>
+</head>
+
+<body>
+
+<!-- ================= PC VERSION ================= -->
+<div id="pcVersion">
+<div class="sidebar">
+<div class="sidebar-section">
+<h2>Menu</h2>
+<ul>
+<li><a href="index.html">🏠 Home</a></li>
+<li><a href="health-advice.html">🩺 Health Advice</a></li>
+<li><a href="body-structure.html">🧬 Body Structure</a></li>
+<li><a href="nature.html">🌿 Nature</a></li>
+</ul>
+</div>
+
+<div class="sidebar-section">
+<h2>Information</h2>
+<ul>
+<li><a href="daily-exercise.html">🏃 Daily Exercise</a></li>
+<li><a href="articles.html">📚 Articles</a></li>
+<li><a href="community.html">👥 Community</a></li>
+</ul>
+</div>
+
+<div class="sidebar-section">
+<h2>Additional</h2>
+<ul>
+<li><a href="quiz.html">❓ Quiz</a></li>
+<li><a href="bmi-calculator.html" class="active">⚖️ BMI Calculator</a></li>
+<li><a href="gallery.html">🖼️ Gallery</a></li>
+</ul>
+</div>
+
+<div class="sidebar-section">
+<h2>Info</h2>
+<ul>
+<li><a href="connect.html">📞 Contact</a></li>
+<li><a href="about.html">ℹ️ About Us</a></li>
+<li><a style="text-decoration:none;color:#1877f2;" href="https://www.facebook.com/harish.bhatta.56305" target="_blank">🌐 Facebook</a></li>
+<li><a style="text-decoration:none;color:#ff0000;" href="https://www.youtube.com/channel/UCe1apgoO7x9BH3MdeJGWbHQ" target="_blank">▶ YouTube</a></li>
+</ul>
+</div>
+</div>
+
+<div class="main">
+<div class="main-title">BMI Calculator</div>
+
+<div class="card">
+<div class="card-column">
+<p><span style="font-weight:bold; color:#ff0080;">BMI (Body Mass Index) is a calculation that estimates a person’s body fat based on their weight and height.
+It helps determine whether a person is underweight, normal, overweight, or obese and gives an idea of overall health.
+Maintaining a healthy BMI reduces the risk of diseases and improves overall well-being.</p></span></div></div>
+
+<div class="card">
+  <div style="display:flex; gap:20px; flex-wrap:wrap;">
+    <!-- COLUMN 1: BMI Info -->
+    <div class="card-column" style="flex:1; min-width:300px; background:linear-gradient(135deg,#ffecd2,#fad090); padding:20px; border-radius:12px;">
+      <h3>BMI Information</h3>
+      <p><span style="font-weight:bold; color:#ff4f79;">BMI measures body fat based on height and weight. Regular monitoring can guide better lifestyle.</span></p>
+      <ul>
+        <li><span style="color:#3333cc; font-weight:bold;">Underweight:</span> <span style="color:#3333cc;">Less than 18.5</span></li>
+        <li><span style="color:#33cc33; font-weight:bold;">Normal:</span> <span style="color:#33cc33;">18.5 – 24.9</span></li>
+        <li><span style="color:#ff9900; font-weight:bold;">Overweight:</span> <span style="color:#ff9900;">25 – 29.9</span></li>
+        <li><span style="color:#ff3300; font-weight:bold;">Obese:</span> <span style="color:#ff3300;">30 or more</span></li>
+      </ul>
+    </div>
+
+    <!-- COLUMN 2: Calculator -->
+    <div class="card-column" style="flex:1; min-width:300px; background:linear-gradient(135deg,#ff9a9e,#fad0c4); padding:20px; border-radius:12px;">
+      <h3>BMI Calculator</h3>
+
+      <!-- Weight Input with Unit -->
+      <label for="weight" style="font-size:1.3rem; color:#3333cc;">Weight:</label>
+      <input type="number" id="weight" placeholder="kg">
+      <select id="weightUnit">
+        <option value="kg">kg</option>
+        <option value="lb">lb</option>
+      </select>
+      <br><br>
+
+      <!-- Height Input with Unit -->
+      <label for="height" style="font-size:1.3rem; color:#3333cc;">Height:</label>
+      <input type="number" id="height" placeholder="cm">
+      <input type="number" id="heightInch" placeholder="in" style="display:none;">
+      <select id="heightUnit">
+        <option value="cm">cm</option>
+        <option value="ftin">ft/in</option>
+      </select>
+      <br><br>
+
+      <button onclick="calculateBMI()" style="background:#ff4f79; color:white;">Calculate</button>
+      <button onclick="resetBMI()" style="background:#3333cc; color:white;">Refresh</button>
+
+      <p id="bmiResult" style="margin-top:5px; font-size:1.5rem; font-weight:700; color:#ff9900;"></p>
+    </div>
+
+  </div>
+</div>
+
+<footer>© 2026 HB Creations | Health & Everyday Life | Made with ❤</footer>
+</div>
+</div>
+
+<!-- ================= MOBILE VERSION ================= -->
+<div id="mobileVersion">
+  <div class="main-title">
+    <div id="menu-button">☰</div>
+    <div class="letters">
+      <a href="index.html">H</a>
+      <a href="quiz.html">Q</a>
+      <a href="bmi-calculator.html" class="active">B</a>
+      <a href="gallery.html">G</a>
+    </div>
+  </div>
+
+  <div id="sidebar">
+    <div class="sidebar-section">
+      <h22>Menu</h22>
+      <ul>
+        <li><a href="index.html">🏠 Home</a></li>
+        <li><a href="health-advice.html">🩺 Health Advice</a></li>
+        <li><a href="body-structure.html">🧬 Body Structure</a></li>
+        <li><a href="nature.html">🌿 Nature</a></li>
+      </ul>
+    </div>
+
+    <div class="sidebar-section">
+      <ul>
+        <li><a href="daily-exercise.html">🏃 Daily Exercise</a></li>
+        <li><a href="articles.html">📚 Articles</a></li>
+        <li><a href="community.html">👥 Community</a></li>
+      </ul>
+    </div>
+
+    <div class="sidebar-section">
+      <h2>Additional</h2>
+      <ul>
+        <li><a href="quiz.html">❓ Quiz</a></li>
+        <li><a href="bmi-calculator.html" class="active">⚖️ BMI Calculator</a></li>
+        <li><a href="gallery.html">🖼️ Gallery</a></li>
+      </ul>
+    </div>
+
+    <div class="sidebar-section">
+      <h2>Info</h2>
+      <ul>
+        <li><a href="connect.html">📞 Contact</a></li>
+        <li><a href="about.html">ℹ️ About Us</a></li>
+        <li><a style="text-decoration:none;color:#1877f2;" href="https://www.facebook.com/harish.bhatta.56305" target="_blank">🌐 Facebook</a></li>
+        <li><a style="text-decoration:none;color:#ff0000;" href="https://www.youtube.com/channel/UCe1apgoO7x9BH3MdeJGWbHQ" target="_blank">▶ YouTube</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <div id="menuOverlay"></div>
+
+  <div class="main">
+    <div class="section-title">BMI Calculator</div>
+
+    <div class="card-column" style="background:linear-gradient(135deg,#ff9a9e,#fad0c4); padding:20px; border-radius:12px;">
+      <h3>BMI Calculator</h3>
+
+      <!-- Weight Input -->
+      <div style="display:flex; align-items:center; gap:5px; margin-bottom:15px;">
+        <label for="m_weight" style="font-size:1.2rem; color:#3333cc; min-width:60px;">Weight:</label>
+        <input type="number" id="m_weight" placeholder="kg" class="bmi-equal">
+        <select id="m_weightUnit" class="bmi-input-select">
+          <option value="kg">kg</option>
+          <option value="lb">lb</option>
+        </select>
+      </div>
+
+      <!-- Height Input -->
+      <div style="display:flex; align-items:center; gap:5px; margin-bottom:15px;">
+        <label for="m_height" style="font-size:1.2rem; color:#3333cc; min-width:60px;">Height:</label>
+        <input type="number" id="m_height" placeholder="cm" class="bmi-equal1">
+        <input type="number" id="m_heightInch" placeholder="in" class="bmi-equal" style="display:none;">
+        <select id="m_heightUnit" class="bmi-input-select">
+          <option value="cm">cm</option>
+          <option value="ftin">ft/in</option>
+        </select>
+      </div>
+
+      <button onclick="calculateBMI()" style="background:#ff4f79; color:white; margin-right:5px;">Calculate</button>
+      <button onclick="resetBMI()" style="background:#3333cc; color:white;">Refresh</button>
+
+      <p id="m_bmiResult" style="margin-top:10px; font-size:1.4rem; font-weight:700; color:#ff9900;"></p>
+    </div>
+
+    <div class="card-column" style="background:linear-gradient(135deg,#ffecd2,#fad090); padding:20px; border-radius:12px; margin-top:20px;">
+      <h3>BMI Information</h3>
+      <p><span style="font-weight:bold; color:#ff4f79;">BMI measures body fat based on height and weight. Regular monitoring can guide better lifestyle.</span></p>
+      <ul>
+        <li><span style="color:#3333cc; font-weight:bold;">Underweight:</span> Less than 18.5</li>
+        <li><span style="color:#33cc33; font-weight:bold;">Normal:</span> 18.5 – 24.9</li>
+        <li><span style="color:#ff9900; font-weight:bold;">Overweight:</span> 25 – 29.9</li>
+        <li><span style="color:#ff3300; font-weight:bold;">Obese:</span> 30 or more</li>
+      </ul>
+    </div>
+
+  <footer>© 2026 HB Creations | Made with ❤</footer>
+</div>
+</div>
+
+
+<script>
+// ================= MENU / SIDEBAR =================
+
+// Grab elements
+const menuButton = document.getElementById("menu-button");
+const sidebar = document.getElementById("sidebar");
+const overlay = document.getElementById("menuOverlay");
+
+function openSidebar() {
+  sidebar.classList.add("open");
+  overlay.classList.add("active");
+  document.body.style.overflow = 'hidden';
+  window.scrollTo({ top: 0, behavior: 'smooth' }); // scroll page to top
+  history.pushState({ menu: true }, "");
+}
+
+// Close sidebar function
+function closeSidebar() {
+  sidebar.classList.remove("open");
+  overlay.classList.remove("active");
+  document.body.style.overflow = '';
+}
+
+// Toggle sidebar
+function toggleSidebar() {
+  if (sidebar.classList.contains("open")) {
+    closeSidebar();
+  } else {
+    openSidebar();
+  }
+}
+
+// Event listeners
+menuButton.addEventListener("click", toggleSidebar);
+overlay.addEventListener("click", closeSidebar);
+
+// Close if clicking outside sidebar (except menu button)
+document.addEventListener("click", (e) => {
+  if (sidebar.classList.contains("open") &&
+      !sidebar.contains(e.target) &&
+      e.target !== menuButton) {
+    closeSidebar();
+  }
+});
+
+// Swipe gesture (right → left closes sidebar)
+let touchStartX = 0;
+let touchEndX = 0;
+document.addEventListener("touchstart", (e) => { touchStartX = e.changedTouches[0].screenX; });
+document.addEventListener("touchend", (e) => { touchEndX = e.changedTouches[0].screenX; handleSwipe(); });
+function handleSwipe() {
+  if (sidebar.classList.contains("open")) {
+    if (touchStartX - touchEndX > 60) { closeSidebar(); }
+  }
+}
+
+// Mobile back button closes sidebar
+window.addEventListener("popstate", () => {
+  if (sidebar.classList.contains("open")) { closeSidebar(); }
+});
+
+// ================= UNIT CHANGE =================
+
+// ================= UNIT CHANGE WITH VALUE CONVERSION =================
+
+// PC Weight Unit Change
+document.getElementById("weightUnit").addEventListener("change", (e) => {
+  const input = document.getElementById("weight");
+  const unit = e.target.value;
+
+  if (input.value) {
+    let val = parseFloat(input.value);
+    if (unit === "lb") val = (val * 2.20462).toFixed(1);  // kg → lb
+    else val = (val / 2.20462).toFixed(1);                 // lb → kg
+    input.value = val;
+  }
+
+  input.placeholder = unit;
+});
+
+// Mobile Weight Unit Change
+document.getElementById("m_weightUnit").addEventListener("change", (e) => {
+  const input = document.getElementById("m_weight");
+  const unit = e.target.value;
+
+  if (input.value) {
+    let val = parseFloat(input.value);
+    if (unit === "lb") val = (val * 2.20462).toFixed(1);
+    else val = (val / 2.20462).toFixed(1);
+    input.value = val;
+  }
+
+  input.placeholder = unit;
+});
+
+// PC Height Unit Change
+document.getElementById("heightUnit").addEventListener("change", (e) => {
+  const h = document.getElementById("height");
+  const hi = document.getElementById("heightInch");
+  const unit = e.target.value;
+
+  if (unit === "cm") {
+    if (h.value || hi.value) {
+      const totalInches = (parseFloat(h.value) || 0) * 12 + (parseFloat(hi.value) || 0);
+      h.value = (totalInches * 2.54).toFixed(1);
+      hi.value = "";
+    }
+    h.style.width = "200px";
+    h.style.display = "inline-block";
+    h.placeholder = "cm";
+    hi.style.display = "none";
+  } else {
+    if (h.value) {
+      const totalInches = (parseFloat(h.value) / 2.54).toFixed(1);
+      const feet = Math.floor(totalInches / 12);
+      const inches = (totalInches % 12).toFixed(1);
+      h.value = feet;
+      hi.value = inches;
+    }
+    h.style.width = "95px";
+    hi.style.width = "95px";
+    h.style.display = "inline-block";
+    hi.style.display = "inline-block";
+    h.placeholder = "ft";
+    hi.placeholder = "in";
+  }
+});
+
+// Mobile Height Unit Change
+document.getElementById("m_heightUnit").addEventListener("change", (e) => {
+  const h = document.getElementById("m_height");
+  const hi = document.getElementById("m_heightInch");
+  const unit = e.target.value;
+
+  if (unit === "cm") {
+    if (h.value || hi.value) {
+      const totalInches = (parseFloat(h.value) || 0) * 12 + (parseFloat(hi.value) || 0);
+      h.value = (totalInches * 2.54).toFixed(1);
+      hi.value = "";
+    }
+    h.style.width = "100%";
+    h.style.display = "inline-block";
+    hi.style.display = "none";
+    h.placeholder = "cm";
+  } else {
+    if (h.value) {
+      const totalInches = (parseFloat(h.value) / 2.54).toFixed(1);
+      const feet = Math.floor(totalInches / 12);
+      const inches = (totalInches % 12).toFixed(1);
+      h.value = feet;
+      hi.value = inches;
+    }
+    h.style.width = "50%";
+    hi.style.width = "50%";
+    h.style.display = "inline-block";
+    hi.style.display = "inline-block";
+    h.placeholder = "ft";
+    hi.placeholder = "in";
+  }
+});
+
+// ================= BMI CALCULATOR =================
+
+function calculateBMI() {
+  const isPC = document.querySelector("#pcVersion")?.offsetParent !== null;
+  
+  const weightInput = document.querySelector(isPC ? "#weight" : "#m_weight");
+  const weightUnit = document.querySelector(isPC ? "#weightUnit" : "#m_weightUnit").value;
+
+  const heightUnitSelect = document.querySelector(isPC ? "#heightUnit" : "#m_heightUnit");
+  const heightUnit = heightUnitSelect.value;
+
+  const heightInput = document.querySelector(isPC ? "#height" : "#m_height");
+  const heightInchInput = document.querySelector(isPC ? "#heightInch" : "#m_heightInch");
+
+  const result = document.querySelector(isPC ? "#bmiResult" : "#m_bmiResult");
+
+  let weight = parseFloat(weightInput.value);
+  let height = parseFloat(heightInput.value);
+  let heightInch = parseFloat(heightInchInput.value);
+
+  if (!weight || !height || (heightUnit === "ftin" && (isNaN(heightInch) || heightInch === null))) {
+    result.textContent = "Please enter valid values!";
+    result.style.color = "#ff9900";
+    return;
+  }
+
+  if (weightUnit === "lb") weight *= 0.453592;
+
+  if (heightUnit === "ftin") {
+    height = (height * 12 + heightInch) * 2.54;
+  }
+
+  height /= 100;
+
+  const bmi = (weight / (height * height)).toFixed(1);
+
+  let category = "";
+  let color = "";
+
+  if (bmi < 18.5) {
+    category = "Underweight";
+    color = "#3333cc";
+  } else if (bmi < 25) {
+    category = "Normal";
+    color = "#33cc33";
+  } else if (bmi < 30) {
+    category = "Overweight";
+    color = "#ff9900";
+  } else {
+    category = "Obese";
+    color = "#ff3300";
+  }
+
+  result.textContent = `Your BMI: ${bmi} (${category})`;
+  result.style.color = color;
+}
+
+function resetBMI() {
+  const isPC = document.querySelector("#pcVersion")?.offsetParent !== null;
+
+  const weightInput = document.querySelector(isPC ? "#weight" : "#m_weight");
+  const heightInput = document.querySelector(isPC ? "#height" : "#m_height");
+  const heightInchInput = document.querySelector(isPC ? "#heightInch" : "#m_heightInch");
+  const result = document.querySelector(isPC ? "#bmiResult" : "#m_bmiResult");
+
+  weightInput.value = "";
+  heightInput.value = "";
+  heightInchInput.value = "";
+  result.textContent = "";
+}
+</script>
+</body>
+</html>
